@@ -1,5 +1,5 @@
 Github:
-	Source Code Repository
+	Source Code Repository  
 	Versioning: Commit ID
 	WebBased Application
 	Cloud Environments : dev,qa,stage/pre-prod,prod
