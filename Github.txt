@@ -32,20 +32,7 @@ Scenario 1: Pushing the code into the Github for the first time.
 4. Access the repsitory link for the code pushed via Eclispe
 
 Generate a Token =>
-Settings => Network = > Developer Settings => Token Classicc
-		date : No Expiration
-		Select all the checkboxes 
------------------------------------------------------------------------------------
- 
-Scenario 2: import the code into the eclipse ->Create a branch from master -> Perform changes ->commit & Push to Github->
-			create Pull request[compare the differences between two branches] ->Review->Merge into master 
-			
-Scenario 3: Refresh your_branch with latest master branch changes
-			switch to master 
-				>> team -> pull 
-			switch to your_branch
-				-> merge master 
-
+Settings 
 
 Scenario 4: Resolving Conflicts 
 			Conflicts:
