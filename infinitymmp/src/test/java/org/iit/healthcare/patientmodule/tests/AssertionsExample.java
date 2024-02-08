@@ -8,8 +8,7 @@ public class AssertionsExample {
 	
 	@Test
 	public void hardAssertion()
-	{
-		
+	{ 
 		boolean result = false;
 		
 		Assert.assertTrue(result);
