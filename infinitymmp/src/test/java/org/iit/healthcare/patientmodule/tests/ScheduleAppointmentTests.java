@@ -34,7 +34,7 @@ public class ScheduleAppointmentTests extends BaseClass{
 		driver.findElement(By.xpath("//span[normalize-space()='Schedule Appointment']")).click();
 		driver.findElement(By.xpath("//input[@value='Create new appointment']")).click();
 		
-		String doctorName="Smith";
+		String doctorName="Agarval";
 		String description="Orthopedic";
 		expectedHMap.put("doctor", doctorName);
 		driver.findElement(By.xpath("//h4[text()='Dr."+doctorName+"']/parent::li/div/p[text()='Description:"+description+"']/ancestor::ul/following-sibling::button")).click();
