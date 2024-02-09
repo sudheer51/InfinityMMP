@@ -37,9 +37,11 @@ public class MMPLib {
 	{
 	    driver.get(url);
 	}
+
+	}
 	
 	 
-}
+
 
 
 
