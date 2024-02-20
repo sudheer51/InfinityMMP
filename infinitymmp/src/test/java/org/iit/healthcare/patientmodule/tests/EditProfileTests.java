@@ -12,10 +12,28 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class EditProfileTests extends BaseClass{
-	 
+
+	//WebDriver driver;
+	MMPLib mmpLib;
+	/**
+	 * 
+	 * Validate LastName with valid and invalid
+	 * Validate License - 8 Digit Random 
+	 * 
+	 */
+
+	@BeforeClass
+	public void instantiateDriver()
+	{
+		//WebDriverManager.chromedriver().setup();
+		// driver = new ChromeDriver();
+		mmpLib = new MMPLib(driver);
+	}
+
 	@Test
 	public void validateEditProfileTest()
 	{
+
 		MMPLib mmpLib = new MMPLib(driver);
 	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
 	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
@@ -25,16 +43,18 @@ public class EditProfileTests extends BaseClass{
 	@Test
 	public void validateFName_withInvalidData()
 	{
-		 
+
 		MMPLib mmpLib = new MMPLib(driver);
 	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
 		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
 		boolean result = editFirstName_withInvalidData();
 		Assert.assertTrue(result);
 	}
 	@Test
 	public void validateEditProfileFields_NonEditable()
 	{
+
 	    MMPLib mmpLib = new MMPLib(driver);
 	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
 	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
@@ -71,7 +91,7 @@ public class EditProfileTests extends BaseClass{
 		alrt.accept();
 		String actualfNameValue = driver.findElement(By.id("fname")).getAttribute("value");
 		return expectedfNameValue.equals(actualfNameValue);
-		
+
 	}
 	public String generateRandomString()
 	{
@@ -79,15 +99,15 @@ public class EditProfileTests extends BaseClass{
 		int u = 65+ rand.nextInt(26);
 		char upperCase = (char) u;
 		System.out.println("UpperCase::" + upperCase );
-		
+
 		//lower 97 to 122
 		int l = 97+rand.nextInt(122-97+1); 
 		char lowercase = (char) l;
 		System.out.println("lowercase:: " + lowercase);
-		
+
 		String randomString = upperCase+""+lowercase+"";
 		return randomString;
-		
+
 	}
 	public String generateRandomNumber()
 	{
@@ -95,17 +115,17 @@ public class EditProfileTests extends BaseClass{
 		int u = 65+ rand.nextInt(26);
 		char upperCase = (char) u;
 		System.out.println("UpperCase::" + upperCase );
-		
+
 		//lower 97 to 122
 		int l = 97+rand.nextInt(122-97+1); 
 		char lowercase = (char) l;
 		System.out.println("lowercase:: " + lowercase);
-		
+
 		String randomString = upperCase+lowercase+"";
 		return randomString;
-		
+
 	}
-	 
-	
+
+
 
 }
