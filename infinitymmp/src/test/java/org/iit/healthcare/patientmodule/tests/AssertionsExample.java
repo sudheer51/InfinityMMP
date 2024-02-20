@@ -8,15 +8,14 @@ public class AssertionsExample {
 	
 	@Test
 	public void hardAssertion()
-	{
-		
+	{ 
 		boolean result = false;
 		
 		Assert.assertTrue(result);
 		System.out.println("Hello");
 	
 		Assert.assertFalse(result);
-		System.out.println("HelloWorld");
+		System.out.println("HelloWorld Everyone");
 		
 	}
 	@Test
