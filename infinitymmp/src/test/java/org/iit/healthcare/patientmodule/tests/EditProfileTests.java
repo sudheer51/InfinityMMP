@@ -24,18 +24,19 @@ public class EditProfileTests extends BaseClass{
 	 * 
 	 */
 	
-	@BeforeClass
+	/*@BeforeClass
 	public void instantiateDriver()
 	{
 		//WebDriverManager.chromedriver().setup();
 	   // driver = new ChromeDriver();
 	    mmpLib = new MMPLib(driver);
 	}
+	*/
 	@Test
 	public void validateEditProfileTest()
 	{
 	     
-	    mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
 		boolean result = editFirstName();
 		Assert.assertTrue(result);
 	}
@@ -44,7 +45,7 @@ public class EditProfileTests extends BaseClass{
 	{
 		 
 	    
-		  mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
 		boolean result = editFirstName_withInvalidData();
 		Assert.assertTrue(result);
 	}
@@ -53,7 +54,7 @@ public class EditProfileTests extends BaseClass{
 	{
 		 
 	    
-		  mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
 		boolean result = editProfile_nonEditableFields();
 		Assert.assertTrue(result);
 	}
