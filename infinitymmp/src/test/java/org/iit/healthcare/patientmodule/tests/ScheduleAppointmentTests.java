@@ -20,7 +20,7 @@ public class ScheduleAppointmentTests extends BaseClass{
 	public void bookAppointment()
 	{
 		HashMap<String,String> expectedHMap = new HashMap<String,String>();
-		HashMap<String,String> actualHMap = new HashMap<String,String>();
+		//HashMap<String,String> actualHMap = new HashMap<String,String>();
 		
 	 
 		driver.get(mmpProp.getProperty("patienturl"));
@@ -51,18 +51,29 @@ public class ScheduleAppointmentTests extends BaseClass{
 		String expectedYear = dateArr[2];
 		String actualYear = driver.findElement(By.xpath("//span[@class='ui-datepicker-year']")).getText();
 		
-		while(actualYear!=expectedYear)
+		while(!(actualYear.equals(expectedYear)))
 		{
-			
+			driver.findElement(By.xpath("//span[text()='Next']")).click();
+			actualYear = driver.findElement(By.xpath("//span[@class='ui-datepicker-year']")).getText();
+		}
+		String expectedMonth = dateArr[1];//April
+		String actualMonth = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']")).getText();//January
+		
+		while(!(actualMonth.equals(expectedMonth)))
+		{
+			driver.findElement(By.xpath("//span[text()='Next']")).click();
+			actualMonth = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']")).getText();
 		}
 		
-		
+		driver.findElement(By.linkText(dateArr[0])).click();
 		expectedHMap.put("date",driver.findElement(By.id("datepicker")).getAttribute("value"));
+		
 		
 		Select timeSelect = new Select(driver.findElement(By.id("time")));
 		String appointmentTime="11Am";
 		timeSelect.selectByVisibleText(appointmentTime);
 		expectedHMap.put("time", appointmentTime);
+		
 		
 		
 		
@@ -75,9 +86,6 @@ public class ScheduleAppointmentTests extends BaseClass{
 		driver.findElement(By.xpath("//input[@value='Submit']")).click();
 		System.out.println("Expected HMAP" + expectedHMap);
 		
-		
-		
-		
 	
 	}
 	public static String getFutureDate(int noofDays)
@@ -85,7 +93,7 @@ public class ScheduleAppointmentTests extends BaseClass{
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DAY_OF_MONTH, 5);
 		Date d =calendar.getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMM/YYYY");
+		SimpleDateFormat sdf = new SimpleDateFormat("d/MMMM/YYYY");
 		String date = sdf.format(d);
 		String dateArr[] = date.split("/");
 		System.out.println(dateArr[0]);

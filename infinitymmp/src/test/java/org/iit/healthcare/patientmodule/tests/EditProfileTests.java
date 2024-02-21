@@ -6,58 +6,69 @@ import org.iit.healthcare.mmp.util.BaseClass;
 import org.iit.healthcare.mmp.util.MMPLib;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class EditProfileTests extends BaseClass{
+
 	//WebDriver driver;
-	 MMPLib mmpLib;
+	MMPLib mmpLib;
 	/**
 	 * 
 	 * Validate LastName with valid and invalid
 	 * Validate License - 8 Digit Random 
 	 * 
 	 */
-	
+
 	@BeforeClass
 	public void instantiateDriver()
 	{
 		//WebDriverManager.chromedriver().setup();
-	   // driver = new ChromeDriver();
-	    mmpLib = new MMPLib(driver);
+		// driver = new ChromeDriver();
+		mmpLib = new MMPLib(driver);
 	}
+
 	@Test
 	public void validateEditProfileTest()
 	{
-	     
+
+
+		MMPLib mmpLib = new MMPLib(driver);
+	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
 	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+		boolean result = editFirstName();
+		Assert.assertTrue(result);
 
-	  		boolean result = editFirstName();
-
-		boolean result1 = editFirstName();
-
-		Assert.assertTrue(result1);
 	}
 	@Test
 	public void validateFName_withInvalidData()
 	{
+
 		 
 	    
 		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
+		MMPLib mmpLib = new MMPLib(driver);
+	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
+		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
 		boolean result = editFirstName_withInvalidData();
 		Assert.assertTrue(result);
 	}
 	@Test
-	public void validateEditProfileFiels_NonEditable()
+	public void validateEditProfileFields_NonEditable()
 	{
+
 		 
 	    
 		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
+	    MMPLib mmpLib = new MMPLib(driver);
+	    mmpLib.launchBrowser(mmpProp.getProperty("patienturl"));
+	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
 		boolean result = editProfile_nonEditableFields();
 		Assert.assertTrue(result);
 	}
@@ -65,7 +76,7 @@ public class EditProfileTests extends BaseClass{
 	{
 		driver.findElement(By.xpath("//span[normalize-space()='Profile']")).click();
 		String actual = driver.findElement(By.id("fname")).getAttribute("readonly");
-		String expected="readonly";
+		String expected="true";
 		return expected.equals(actual);
 	}
 	public boolean editFirstName_withInvalidData()
@@ -91,7 +102,7 @@ public class EditProfileTests extends BaseClass{
 		alrt.accept();
 		String actualfNameValue = driver.findElement(By.id("fname")).getAttribute("value");
 		return expectedfNameValue.equals(actualfNameValue);
-		
+
 	}
 	public String generateRandomString()
 	{
@@ -99,15 +110,15 @@ public class EditProfileTests extends BaseClass{
 		int u = 65+ rand.nextInt(26);
 		char upperCase = (char) u;
 		System.out.println("UpperCase::" + upperCase );
-		
+
 		//lower 97 to 122
 		int l = 97+rand.nextInt(122-97+1); 
 		char lowercase = (char) l;
 		System.out.println("lowercase:: " + lowercase);
-		
+
 		String randomString = upperCase+""+lowercase+"";
 		return randomString;
-		
+
 	}
 	public String generateRandomNumber()
 	{
@@ -115,17 +126,17 @@ public class EditProfileTests extends BaseClass{
 		int u = 65+ rand.nextInt(26);
 		char upperCase = (char) u;
 		System.out.println("UpperCase::" + upperCase );
-		
+
 		//lower 97 to 122
 		int l = 97+rand.nextInt(122-97+1); 
 		char lowercase = (char) l;
 		System.out.println("lowercase:: " + lowercase);
-		
+
 		String randomString = upperCase+lowercase+"";
 		return randomString;
-		
+
 	}
-	 
-	
+
+
 
 }
