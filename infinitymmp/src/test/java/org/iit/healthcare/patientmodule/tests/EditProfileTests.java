@@ -35,16 +35,20 @@ public class EditProfileTests extends BaseClass{
 	public void validateEditProfileTest()
 	{
 	     
-	    mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
-		boolean result = editFirstName();
-		Assert.assertTrue(result);
+	    mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+
+	  		boolean result = editFirstName();
+
+		boolean result1 = editFirstName();
+
+		Assert.assertTrue(result1);
 	}
 	@Test
 	public void validateFName_withInvalidData()
 	{
 		 
 	    
-		  mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
 		boolean result = editFirstName_withInvalidData();
 		Assert.assertTrue(result);
 	}
@@ -53,7 +57,7 @@ public class EditProfileTests extends BaseClass{
 	{
 		 
 	    
-		  mmpLib.login(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
+		  mmpLib.loginValidUser(mmpProp.getProperty("patientusername"),mmpProp.getProperty("patientpassword"));
 		boolean result = editProfile_nonEditableFields();
 		Assert.assertTrue(result);
 	}
