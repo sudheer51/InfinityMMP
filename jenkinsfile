@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Healthcheck') {
+            steps {
+                bat '''dir
+                       ping www.google.com -n 5
+                       ping 96.84.175.78 -n 2'''
+            }
+        }
+         stage('Schedule_Appointment_Tests') {
+            steps {
+                 git 'https://github.com/sudheer51/InfinityMMP.git'
+                 dir('infinitymmp') 
+                 {
+                        bat 'mvn clean test'
+                 }
+            }
+        }
+    }
+}
