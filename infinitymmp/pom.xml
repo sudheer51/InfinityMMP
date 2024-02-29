@@ -71,7 +71,7 @@
           <version>3.2.5</version>
            <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>ScheduleAppointmentTests.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         </plugin>
