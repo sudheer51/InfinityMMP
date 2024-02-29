@@ -2,7 +2,7 @@ package org.iit.healthcare.patientmodule.tests;
 
 import java.sql.SQLException;
 
-import org.mmp.lib.AppLibrary;
+import org.iit.healthcare.mmp.util.AppLibrary;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
  

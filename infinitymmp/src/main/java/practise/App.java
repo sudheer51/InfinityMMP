@@ -18,7 +18,6 @@ public class App extends AppLibrary
 	public void add(int a,int b)
 	{
 		//AppLibrary appLib = new AppLibrary();
-		System.out.println("value");
 		int c= a+b;
 		return;
 	}
@@ -102,5 +101,6 @@ public class App extends AppLibrary
 //        System.out.println("Expected"+ expected);
        
         
+     	
     }
 }
